@@ -7,8 +7,21 @@ keyToggler = document.querySelector(".keyCheckbox input");
 let allKeys = [],
 audio = new Audio("tunes/a.wav"); // by default , audio et is "a" tune
 const playTune = (key) => {
-    audio.src = `tunes/${key}.wav`; // passing the audio src bassed ont the pressed   
-    audio.play();
+    audio.src = `tunes/${key}.wav`; // passing the audio src bassed ont the pressed  
+    var playPromise = audio.play();
+ 
+  if (playPromise !== undefined) {
+    playPromise.then(_ => {
+      // Automatic playback started!
+      // Show playing UI.
+      // We can now safely pause video...
+      audio.pause();
+    })
+    .catch(error => {
+      // Auto-play was prevented
+      // Show paused UI.
+    });
+  }
     audio.pause();
 
     // To know which key get clicked adding the active class
