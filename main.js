@@ -22,7 +22,7 @@ const playTune = (key) => {
       // Show paused UI.
     });
   }
-    audio.pause();
+   
 
     // To know which key get clicked adding the active class
     const clickedKey = document.querySelector(`[data-key="${key}"]`);
