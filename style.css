@@ -1,0 +1,162 @@
+@font-face {
+    font-family: 'music1';
+    src: url('music1.ttf') format('truetype');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'music1';
+}
+
+html{
+    font-size: 62.5%;
+    /* 1rem = 10px */
+}
+
+body{
+    display: flex;
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #c3f2fd;
+}
+
+/* The main board of piano */
+.wraper{
+    width: 70rem;
+    border-radius: 2rem;
+    padding: 3.5rem 4rem;
+    background: #141414;
+}
+/* The top side panel */
+.wraper header{
+    color: #b2b2b2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* The Title of web app */
+header h2{
+    font-size: 1.6rem;
+}
+
+header .column{
+    display: flex;
+    align-items: center;
+}
+/* The gap in between the range and checkbox with their title */
+header .column span{
+    font-weight: 500;
+    margin-right: 1.5rem;
+}
+
+/* volumn Slider */
+
+.volumn-slider input{
+    accent-color: #fff;
+}
+
+/* Show Key toggler */
+.keyCheckbox input{
+    appearance: none;
+    position: relative;
+    cursor: pointer;
+    width: 6rem;
+    height: 3rem;
+    border-radius: 3rem;
+    background: #4b4b4b;
+}
+.keyCheckbox input::before{
+    content: "";
+    position: absolute;
+    height: 2rem;
+    width: 2rem;
+    top: 50%;
+    left: 0.5rem;
+    border-radius: inherit;
+    background: #8c8c8c;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.keyCheckbox input:checked:before{
+    left: 3.5rem;
+    background: #fff;
+}
+/* End of Show Key toggle */
+
+/* Piano keys */
+
+.piano-keys{
+    display: flex;
+    margin-top: 4rem;
+    justify-content: center;
+}
+.piano-keys .key{
+    position: relative;
+    list-style: none;
+    user-select: none;
+    color: #a2a2a2;
+    font-family: 'music1';
+    text-transform: uppercase;
+}
+
+.piano-keys span{
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    text-align: center;
+    font-size: 1.13rem;
+}
+
+/* Piano black key and active state */
+.piano-keys .black{
+    width: 4.4rem;
+    height: 14rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    z-index: 2;
+    margin: 0 -2.2rem 0 -2.2rem;
+    /* border: 0.1rem solid #000; */
+    background: linear-gradient(#333,#000);
+}
+.piano-keys .black.active{
+    box-shadow: inset -0.5rem 0.5rem 1rem rgba(255,255,255, 0.1);
+    background: linear-gradient(to bottom,#000,#434343);
+}
+/* Piano white key and active state */
+.piano-keys .white{
+    width: 7rem;
+    height: 23rem;
+    border-radius: 0.8rem;
+    border: 0.1rem solid #000;
+    background: linear-gradient(#fff 96%,#eee 4%);
+}
+
+.piano-keys .white.active{
+    box-shadow: inset -0.5rem 0.5rem 2rem rgba(0,0,0, 0.2);
+    background: linear-gradient(to bottom,#fff 0%,#ccc 4%);
+}
+
+
+/* Hide the key of piano notation */
+.piano-keys .key.hide span{
+    display: none;
+}
+
+/* Responsive */
+
+@media screen and (orientation:portrait) {
+    body{
+        transform: rotate(90deg);
+        transform-origin:50% 50%;
+    }
+
+    .wraper {
+        margin-left:50% ;
+        justify-content: center;
+        align-items: center;
+    }
+}
